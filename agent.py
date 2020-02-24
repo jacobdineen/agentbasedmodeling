@@ -22,8 +22,6 @@ class agent(object):
     '''
     #-----------------------------------------------------------------------------------------------#
     def __init__(self, node_number, G, env, seed=1):
-        self.corpus = np.loadtxt(fname='txt/five_letter_words.txt',
-                                 dtype='str')
         self.node_number = node_number
         self.nodeData = env.nodeData  #key (node number): (strategy, p_act, neighbors, degree)
         self.seed = np.random.seed(seed)
@@ -33,8 +31,9 @@ class agent(object):
             'letters_received': []
         }
         self.target_word = []
+        self.corpus = env.corpus.copy()
 
-    def get_init_hand(self):
+    def get_init_hand(self, env):
         #-----------------------------------------------------------------------------------------------#
         '''
         '''

@@ -1,6 +1,9 @@
 from utils.helpers import possible_words
 import numpy as np
 from agent import agent
+import itertools
+
+
 
 class environment(object):
     #-----------------------------------------------------------------------------------------------#
@@ -70,7 +73,7 @@ class environment(object):
         '''
         '''
         #-----------------------------------------------------------------------------------------------#
-        [self.agents[i].get_target_word(self) for i in range(len(G.nodes))]
+        [self.agents[i].get_target_word(self) for i in range(len(self.G.nodes))]
         self._push_to_historical() #push to historical states dict
         self.time += 1 #increment time counter
 
@@ -86,12 +89,15 @@ class environment(object):
         num_nodes = len(self.G.nodes)
         agent_names = [str(i) for i in range(len(self.G.nodes))]
         for i, j in enumerate(agent_names):
-            agents[i] = agent(node_number= i, G = self.G, env = self)
+            agents[i] = agent(node_number=i, G = self.G, env = self)
         #-------------------------------------------------
         #Get init hand and pass back data to env.current_state
         #-------------------------------------------------
-        [j.get_init_hand()
-         for i, j in agents.items()]  #-> L_init(agent) & env.current_state
+        print('agents passed into env')
+        self.agents = agents
+
+        [j.get_init_hand(self)
+         for i, j in self.agents.items()]  #-> L_init(agent) & env.current_state
         print('all agents assigned letters_initial')
 
         print('searching for candidate words C^possible in C')
@@ -99,7 +105,6 @@ class environment(object):
         )  #Find Candidate Words - C^Possible, given init letter distr
 
         print('agents passed into env')
-        self.agents = agents
         print('init target words set locally. Time counter incremented by 1')
         self._set_init_targets()  #Set initial target word
 
