@@ -3,6 +3,8 @@ from utils.graphinit import Network
 from agent import agent
 from env import environment
 import warnings
+import pandas as pd
+
 warnings.filterwarnings("ignore", category=UserWarning)
 
 if __name__ == '__main__':
@@ -22,3 +24,4 @@ if __name__ == '__main__':
 
     env = environment(G, t_max= 400)
     env.set_env()
+    env.play()
