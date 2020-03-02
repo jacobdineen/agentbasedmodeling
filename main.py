@@ -8,7 +8,6 @@ import pandas as pd
 warnings.filterwarnings("ignore", category=UserWarning)
 
 if __name__ == '__main__':
-
     #Graph Generation
     num_nodes = 5
     prob_edges = 0.5
@@ -19,11 +18,11 @@ if __name__ == '__main__':
     p_star = 0.20
 
     G, table = Network(num_nodes, prob_edges, pr_selfish,
-                      p_star).make_random_graph(plot=True, print_table=True)
+                    p_star).make_random_graph(plot=True, print_table=True)
 
 
-    env = environment(G, t_max= 500)
-
+    env = environment(G, t_max= 1000)
     env.set_env()
     env.play()
+    df = env.output_logs(nodes = num_nodes, edgeprob = prob_edges, p_star = p_star, pselfish= pr_selfish)
 
