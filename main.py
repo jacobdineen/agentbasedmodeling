@@ -22,7 +22,8 @@ if __name__ == '__main__':
                       p_star).make_random_graph(plot=True, print_table=True)
 
 
-    env = environment(G, t_max= 10)
+    env = environment(G, t_max= 500)
+
     env.set_env()
     env.play()
 

@@ -102,13 +102,19 @@ class agent(object):
         Need to update to remove letters from Lrecieved and Lstolen if used to form a word
         '''
         #-----------------------------------------------------------------------------------------------#
+        print('-' * 50)
         assert env.time < env.time_max, 'Maximum time allowed has been reached'
+        print('action to node: {}'.format(self.node_number))
+        print('Move Number: {} , Env Clock: {}'.format(self.actions_taken, env.time))
+
+        print('taking action: Form Word')
         if len(self.letters_needed) == 0:
             env.words_formed.append(("".join(self.target_word),self.node_number)) #global counter
             self.get_target_word(env) #get new target word
         else:
             print('unable to form word. Need additional letters.')
         self._update_state_info(env)
+        print('-' * 50)
 
 
 
@@ -122,8 +128,11 @@ class agent(object):
         Need to update so a letter stolen from non init dist is depleted
         '''
         #-----------------------------------------------------------------------------------------------#
+        print('-' * 50)
         assert env.time < env.time_max, 'Maximum time allowed has been reached'
         print('action to node: {}'.format(self.node_number))
+        print('Move Number: {} , Env Clock: {}'.format(self.actions_taken, env.time))
+
         print('taking action: steal letter')
         neighbors = self.nodeData[self.node_number][2]
         print('available neighbors: {}'.format(neighbors))
@@ -143,12 +152,13 @@ class agent(object):
                         )
                         self.letters['letters_stolen'].append(
                             choose_letter_to_steal)  #update local state
-                        print('letter successfully stolen from node {}'.format(v))
+                        print('letter successfully stolen from node {}'.format(k))
                         break
         else:
             print('unable to steal the chosen letter from k-hop neighbors')
 
         self._update_state_info(env)
+        print('-' * 50)
 
     def _agent_pass_letter(self,env):
         #-----------------------------------------------------------------------------------------------#
@@ -156,8 +166,10 @@ class agent(object):
         Need to update so a letter passed from non init dist is depleted
         '''
         #-----------------------------------------------------------------------------------------------#
+        print('-' * 50)
         assert env.time < env.time_max, 'Maximum time allowed has been reached'
         print('action to node: {}'.format(self.node_number))
+        print('Move Number: {} , Env Clock: {}'.format(self.actions_taken, env.time))
         print('taking action: pass letter')
         neighbors = self.nodeData[self.node_number][2]
         print('available neighbors: {}'.format(neighbors))
@@ -172,22 +184,27 @@ class agent(object):
                         )
                         env.agents[k].letters['letters_received'].append(
                             choose_letter_to_pass)  #update local state
-                        print('letter successfully passed from node {} to node {}'.format(self.node_number, v))
+                        print('letter successfully passed from node {} to node {}'.format(self.node_number, k))
                         break
         else:
             print('unable to steal the chosen letter from k-hop neighbors')
 
         self._update_state_info(env)
+        print('-' * 50)
 
     def _agent_think(self,env):
         #-----------------------------------------------------------------------------------------------#
         '''
         '''
         #-----------------------------------------------------------------------------------------------#
+        print('-' * 50)
         assert env.time < env.time_max, 'Maximum time allowed has been reached'
         print('action to node: {}'.format(self.node_number))
+        print('Move Number: {} , Env Clock: {}'.format(self.actions_taken, env.time))
+
         print('taking action: think')
         self._update_state_info(env)
+        print('-' * 50)
 
     def take_action(self,env):
         #-----------------------------------------------------------------------------------------------#
@@ -195,10 +212,10 @@ class agent(object):
         '''
         #-----------------------------------------------------------------------------------------------#
         n_Data = self.nodeData[self.node_number]
-        node = self.node_number
-        strategy = n_Data[0]
+        # node = self.node_number
+        # strategy = n_Data[0]
         p_act = n_Data[1]
-        neighbors = n_Data[2]
+        # neighbors = n_Data[2]
         action_sampling = np.random.choice(env.action_space, p=p_act)
 
         if action_sampling == env.action_space[0]:  #form_word

@@ -34,7 +34,7 @@ class environment(object):
         self.historical_states = {}  #pop from current state at t+1
         self.words_formed = []  #by player
         self.time = 0
-        self.time_max = t_max
+        self.time_max = 400
 
     def _getnodeData(self):
         #-----------------------------------------------------------------------------------------------#
