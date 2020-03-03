@@ -4,7 +4,14 @@ from agent import agent
 from env import environment
 import warnings
 import sys
+import dash
+from dash.dependencies import Input, Output
+import dash_core_components as dcc
+import dash_html_components as html
+
 warnings.filterwarnings("ignore", category=UserWarning)
+app = dash.Dash(__name__)
+server = app.server
 
 if __name__ == '__main__':
     #Graph Generation
@@ -24,4 +31,4 @@ if __name__ == '__main__':
     env.set_env()
     env.play()
     df = env.output_logs(nodes = num_nodes, edgeprob = prob_edges, p_star = p_star, pselfish= pr_selfish, t_max= t_max)
-
+    app.run_server(debug=True)

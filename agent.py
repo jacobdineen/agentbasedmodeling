@@ -104,8 +104,13 @@ class agent(object):
             'action_number': self.actions_taken,                 # local time counter (actions taken for agent v_i)
             'action': self.action_history[-1][0],                # last action taken
             'action_success': self.action_history[-1][1],        # last action success/failure, boolean
-            'words_formed_bool' : 1 if self.action_history[-1][0] == 'form' and self.action_history[-1][1] == True else 0,
-            'words_formed': self.words_formed                    # running counter of words formed
+            'words_formed_bool_local' : 1 if self.action_history[-1][0] == 'form' and self.action_history[-1][1] == True else 0,
+            'words_formed_local': self.words_formed,                    # running counter of words formed
+            'possible_words' : len(self.corpus),
+            'prop_formed_local' : self.words_formed / len(self.corpus), 
+            'words_formed_global': len(env.words_formed),
+            'prop_formed_global' : len(env.words_formed) / len(self.corpus),
+            'node_count' : len(env.nodes)
         }
         #append current state information to a running log of local state information. 
         df = pd.DataFrame.from_dict(logs, orient='index').T 
