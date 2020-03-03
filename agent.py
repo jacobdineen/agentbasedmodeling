@@ -104,6 +104,7 @@ class agent(object):
             'action_number': self.actions_taken,                 # local time counter (actions taken for agent v_i)
             'action': self.action_history[-1][0],                # last action taken
             'action_success': self.action_history[-1][1],        # last action success/failure, boolean
+            'words_formed_bool' : 1 if self.action_history[-1][0] == 'form' and self.action_history[-1][1] == True else 0,
             'words_formed': self.words_formed                    # running counter of words formed
         }
         #append current state information to a running log of local state information. 

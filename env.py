@@ -107,11 +107,11 @@ class environment(object):
         print('Environment set - > Graph Created. Node attributes assigned.')
 
     #-----------------------------------------------------------------------------------------------#
-    def output_logs(self, nodes, edgeprob, p_star, pselfish):
+    def output_logs(self, nodes, edgeprob, p_star, pselfish, t_max):
         self.logs = pd.concat(
             self.agents[i].logs
             for i in range(len(self.nodes))).sort_values('global_time')
-        self.logs.to_csv('data/Nodes_{}_P_{}_Pstar_{}_PSelfish_{}.csv'.format(nodes, edgeprob, p_star, pselfish))
+        self.logs.to_csv('data/Nodes_{}_P_{}_Pstar_{}_PSelfish_{}_tmax_{}.csv'.format(nodes, edgeprob, p_star, pselfish, t_max))
 
     #-----------------------------------------------------------------------------------------------#
     def play(self):
