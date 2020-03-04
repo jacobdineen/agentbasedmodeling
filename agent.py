@@ -138,6 +138,14 @@ class agent(object):
                 if k in self.neighbors:
                     if choose_letter_to_steal in v.l_union_vi:              
                         self.letters['letters_stolen'].append(choose_letter_to_steal)  
+                        try:
+                            v.letters['letters_received'].remove(choose_letter_to_steal)
+                        except:
+                            pass
+                        try:
+                            v.letters['letters_stolen'].remove(choose_letter_to_steal)
+                        except:
+                            pass
                         break                                                          # Only want to steal a single letter
             self.action_history.append(('steal', True))
         else:
@@ -146,13 +154,20 @@ class agent(object):
     def _agent_pass_letter(self, env):
         self.action_history.append('pass letter')
 
-        choose_letter_to_pass = np.random.choice(self.letters['letters_initial'])
+        choose_letter_to_pass = np.random.choice(self.l_union_vi)
         if choose_letter_to_pass != None:
             for k, v in env.agents.items():
                 if k in self.neighbors:
                     if choose_letter_to_pass not in v.l_union_vi:
-                        env.agents[k].letters['letters_received'].append(
-                            choose_letter_to_pass)  #update local state
+                        v.letters['letters_received'].append(choose_letter_to_pass)  #update local state
+                        try:
+                            self.letters['letters_received'].remove(choose_letter_to_pass)
+                        except:
+                            pass
+                        try:
+                            self.letters['letters_stolen'].remove(choose_letter_to_pass)
+                        except:
+                            pass
                         break
             self.action_history.append(('pass', True))
         else:

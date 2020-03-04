@@ -1,0 +1,11 @@
+,node,strategy,action_vector,neighbors,degree,target,avail_letters,letters_needed,global_time,action_number,action,action_success,words_formed_bool_local,words_formed_local,possible_words,prop_formed_local,words_formed_global,prop_formed_global,node_count
+0,0,selfish,[0.1 0.4 0.2 0.3],"[1, 3, 5, 7]",4,there,"['f', 'l', 'm', 'i', 'j']",['e' 'h' 'r' 't'],1,1,form,False,0,0,3620,0.0,0,0.0,10
+0,1,altruistic,[0.1 0.2 0.4 0.3],"[0, 2, 3, 4, 7]",5,their,"['l', 'f', 'p', 'a', 'q']",['e' 'h' 'i' 'r' 't'],2,1,pass,True,0,0,3620,0.0,0,0.0,10
+0,2,selfish,[0.1 0.4 0.2 0.3],"[1, 6, 7, 8, 9]",5,about,"['b', 'm', 'h', 'n', 'g', 'f']",['a' 'o' 't' 'u'],3,1,pass,True,0,0,3620,0.0,0,0.0,10
+0,3,selfish,[0.1 0.4 0.2 0.3],"[0, 1, 7]",3,these,"['z', 's', 'u', 'f', 's']",['e' 'h' 't'],4,1,steal,True,0,0,3620,0.0,0,0.0,10
+0,4,altruistic,[0.1 0.2 0.4 0.3],"[1, 5, 6, 8]",4,other,"['u', 'l', 'k', 'o', 's']",['e' 'h' 'r' 't'],5,1,think,True,0,0,3620,0.0,0,0.0,10
+0,5,altruistic,[0.1 0.2 0.4 0.3],"[0, 4, 6]",3,write,"['e', 'x', 'x', 'j', 'r']",['i' 't' 'w'],6,1,pass,True,0,0,3620,0.0,0,0.0,10
+0,6,altruistic,[0.1 0.2 0.4 0.3],"[2, 4, 5, 7, 8, 9]",6,first,"['x', 'a', 'w', 'n', 'j']",['f' 'i' 'r' 's' 't'],7,1,think,True,0,0,3620,0.0,0,0.0,10
+0,7,selfish,[0.1 0.4 0.2 0.3],"[0, 1, 2, 3, 6, 9]",6,water,"['j', 'h', 'w', 'z', 'b']",['a' 'e' 'r' 't'],8,1,think,True,0,0,3620,0.0,0,0.0,10
+0,8,altruistic,[0.1 0.2 0.4 0.3],"[2, 4, 6, 9]",4,after,"['a', 'r', 'i', 'y', 'n']",['e' 'f' 't'],9,1,think,True,0,0,3620,0.0,0,0.0,10
+0,9,selfish,[0.1 0.4 0.2 0.3],"[2, 6, 7, 8]",4,where,"['t', 'p', 'k', 'z', 'i', 'w']",['e' 'h' 'r'],10,1,steal,True,0,0,3620,0.0,0,0.0,10

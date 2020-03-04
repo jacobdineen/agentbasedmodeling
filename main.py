@@ -10,8 +10,6 @@ import dash_core_components as dcc
 import dash_html_components as html
 
 warnings.filterwarnings("ignore", category=UserWarning)
-app = dash.Dash(__name__)
-server = app.server
 
 if __name__ == '__main__':
     #Graph Generation
@@ -21,7 +19,7 @@ if __name__ == '__main__':
     pr_selfish = float(sys.argv[3])
     p_star = float(sys.argv[4])
     pr_altrustic = 1 - pr_selfish
-    t_max = 400
+    t_max = int(sys.argv[5])
 
     G, table = Network(num_nodes, prob_edges, pr_selfish,
                     p_star).make_random_graph(plot=True, print_table=True)
@@ -31,4 +29,4 @@ if __name__ == '__main__':
     env.set_env()
     env.play()
     df = env.output_logs(nodes = num_nodes, edgeprob = prob_edges, p_star = p_star, pselfish= pr_selfish, t_max= t_max)
-    app.run_server(debug=True)
+    #app.run_server(debug=True)
